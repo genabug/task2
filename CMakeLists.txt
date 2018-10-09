@@ -1,14 +1,14 @@
 project(rational LANGUAGES CXX)
 
 cmake_minimum_required(VERSION 3.1)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED 11)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED 17)
 
 set(CMAKE_BUILD_TYPE DEBUG)
 
 set(SRC
-    tests.cpp
-    rational.cpp)
+    crational.cpp
+    tests.cpp)
 
 enable_testing()
 
