@@ -204,6 +204,46 @@ TEST_CASE("All operators")
 
 TEST_SUITE_END();
 
-
+TEST_CASE("INPUT")
+{
+    cRational x;
+    std::istringstream isstr;
+    isstr.str("3/8");
+    isstr >> x;
+    cRational y(3,8);
+    CHECK((x>y) == false);
+    CHECK((x<y) == false);
+    CHECK((y==x) == true);
+    CHECK((y==0.375) == true);
+    CHECK((x>=0.375) == true);
+    CHECK((x>=0.376) == false);
+    CHECK((1<=y) == false);
+    CHECK((-y>0) == false);
+    CHECK((0<(+y)) == true);
+    CHECK((0<(+y+(-1))) == false);
+    CHECK((0<(+y)) == true);
+    CHECK((y!=x+1) == true);
+    CHECK((y!=x) == false);
+    cRational z;
+    isstr.clear();
+    isstr.str("26/5");
+    isstr >> z; // 26/5
+    CHECK((z==5) == false);
+    CHECK((static_cast<int>(z)==5) == true);
+    CHECK((static_cast<int>(z)==6) == false);
+    isstr.clear();
+    isstr.str("29/5");
+    isstr >> z; // 29/5
+    CHECK((static_cast<int>(z)==6) == true);
+    isstr.clear();
+    isstr.str("-29/5");
+    isstr >> z; // -29/5
+    CHECK((static_cast<int>(z)==-6) == true);
+    CHECK((static_cast<int>(z)==-5) == false);
+    isstr.clear();
+    isstr.str("-26/5");
+    isstr >> z; // -26/5
+    CHECK((static_cast<int>(z)==-5) == true);
+}
 
 TEST_SUITE_END();
